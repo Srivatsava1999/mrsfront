@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./MovieForm.css";
 function MovieForm(){
 
     const [movie,setMovie]=useState({

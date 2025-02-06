@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./TheatreForm.css";
 function TheatreForm(){
 
     const [theatre,setTheatre]=useState({
