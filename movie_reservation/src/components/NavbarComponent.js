@@ -2,13 +2,14 @@ import React from 'react';
 import AddMovie from '../pages/addmovie';
 import AddTheatre from '../pages/AddTheatre';
 import "./NavbarComponent.css";
+import { Link } from 'react-router-dom';
 
 const NavbarComponent = () =>{
     return (
         <nav className="navbar">
             <ul className="navbar-nav">
                 <li className="logo">
-                    <a href="#" className="nav-link">
+                    <Link to="/" className="nav-link">
                         <span className="link-text logo-text">MRS</span>
                         <svg
                           aria-hidden="true"
@@ -33,10 +34,10 @@ const NavbarComponent = () =>{
                             ></path>
                           </g>
                         </svg>
-                      </a>
+                      </Link>
                 </li>
                 <li className="nav-item">
-                    <a href='../App' className="nav-link">
+                    <Link to='/' className="nav-link">
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         viewBox="0 0 576 512">
@@ -45,10 +46,10 @@ const NavbarComponent = () =>{
                         className="fa-primary"/>
                         </svg>
                         <span className="link-text">Home</span>
-                    </a>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a href="AddMovie" className="nav-link">
+                    <Link to="/add-movie" className="nav-link">
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         viewBox="0 0 512 512">
@@ -57,10 +58,10 @@ const NavbarComponent = () =>{
                         className="fa-primary"/>
                     </svg>
                         <span className="link-text">Movie</span>
-                    </a>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a href="AddTheatre" className="nav-link">
+                    <Link to="add-theatre" className="nav-link">
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         viewBox="0 0 512 512">
@@ -69,7 +70,7 @@ const NavbarComponent = () =>{
                         className="fa-primary"/>
                         </svg>
                         <span className="link-text">Theatre</span>
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>
