@@ -48,13 +48,13 @@ function MovieForm(){
             {message && <p>{message}</p>}
             <form onSubmit={handleSubmit}>
                 <label>Title:</label>
-                <input type="text" name="movieTitle" value={movie.movieTitle} onChange={handleChange} required />
+                <input placeholder="Enter Title" type="text" name="movieTitle" value={movie.movieTitle} onChange={handleChange} required />
                 <label>Duration:</label>
-                <input type="text" name="duration" value={movie.duration} onChange={handleChange} required/>
+                <input placeholder="Enter Duration In Minutes" type="text" name="duration" value={movie.duration} onChange={handleChange} required/>
                 <label>Censor Rating:</label>
-                <input type="text" name="rating" value={movie.rating} onChange={handleChange} required/>
+                <input placeholder="Enter Rating" type="text" name="rating" value={movie.rating} onChange={handleChange} required/>
                 <label>Release Date:</label>
-                <input type="date" name="release_date" value={movie.release_date} onChange={handleChange} required/>
+                <input placeholder="Release Date" type="date" name="release_date" value={movie.release_date} onChange={handleChange} required/>
 
                 <button type="submit">Add Movie</button>
 
