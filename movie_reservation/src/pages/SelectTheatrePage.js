@@ -2,7 +2,7 @@ import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import DropdownComponent from "../components/DropdownComponent";
 import NavbarComponent from "../components/NavbarComponent";
-import "./SelectTheatrePage.css"
+import "./SelectTheatrePage.css";
 
 const SelectTheatrePage=()=>{
 
@@ -27,7 +27,7 @@ const SelectTheatrePage=()=>{
             onChange={(value) => setSelectedTheatre(value)}
             />
             <button
-                onClick={() => navigate(`/select-screen/${selectedTheatre}/`)}
+                onClick={() => navigate(`/select-screen/${selectedTheatre}/screen/`)}
                 disabled={!selectedTheatre}
             >
                 Select Screen

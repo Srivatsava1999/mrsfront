@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AddTheatre from './pages/AddTheatre';
 import SelectTheatrePage from './pages/SelectTheatrePage';
 import AddScreen from './pages/AddScreen';
+import SelectScreen from './pages/SelectScreen';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/add-theatre/" element={<AddTheatre />} />
           <Route path='/theatre/' element={<SelectTheatrePage/>}></Route>
           <Route path='/theatre/:theatreId/screen/' element={<AddScreen/>}></Route>
+          <Route path='/select-screen/:theatreId/screen/' element={<SelectScreen/>}></Route>
         </Routes>
       </Router>
     

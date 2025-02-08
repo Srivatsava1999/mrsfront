@@ -52,8 +52,8 @@ function ScreenForm({theatreId}){
                 <input placeholder="Screen Number" type="text" name="screenNum" value={screen.screenNum} onChange={handleChange} required />
                 <label>Capacity:</label>
                 <input placeholder="Capacity" type="number" name="capacity" value={screen.capacity} onChange={handleChange} required/>
-                <label>Select Theatre:</label>
-                <p>{screen.theatreId}</p>
+                <label>Selected Theatre:</label>
+                <p>{screen.theatreName}</p>
 
                 <button type="submit">Add Screen</button>
 
