@@ -9,9 +9,9 @@ const DisplayAudi = () => {
     const [selectedSeats, setSelectedSeats] = useState(new Set());
 
     useEffect(() => {
-        fetch(`/screen/${screenId}/seats/`)
+        fetch(`http://127.0.0.1:8000/screen/${screenId}/seats/`)
             .then((response) => response.json())
-            .then((data) => setSeatDict(data))
+            .then((data) => setSeatDict(data.seat_layout))
             .catch((error) => console.error("Error fetching Auditorium Layout", error));
     }, [screenId]);
 
