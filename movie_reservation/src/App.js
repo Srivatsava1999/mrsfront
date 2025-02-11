@@ -8,6 +8,7 @@ import AddTheatre from './pages/AddTheatre';
 import SelectTheatrePage from './pages/SelectTheatrePage';
 import AddScreen from './pages/AddScreen';
 import SelectScreen from './pages/SelectScreen';
+import DisplayAudi from './pages/DisplayAudi';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/theatre/' element={<SelectTheatrePage/>}></Route>
           <Route path='/theatre/:theatreId/screen/' element={<AddScreen/>}></Route>
           <Route path='/select-screen/:theatreId/screen/' element={<SelectScreen/>}></Route>
+          <Route path='/screen/:screenId/seats/' element={<DisplayAudi/>}></Route>
         </Routes>
       </Router>
     
