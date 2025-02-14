@@ -10,13 +10,14 @@ const ShowForm = ()=>{
     const [selectedTheatre, setSelectedTheatre]=useState("");
     const [selectedShowType, setSelectedShowType]=useState([]);
     const [selectedDates, setSelectedDates]=useState(today);
+    const [message, setMessage]=useState("");
     
 
-    useEffect=(()=>{
+    useEffect(()=>{
         fetch(`http://127.0.0.1:8000/theatres/`).then(response => response.json()).then(data=>setTheatre(data))
         .catch(error=>console.error("Error fetching theatres", error));
     }, []);
-    useEffect=(()=>{
+    useEffect(()=>{
         fetch(`http://127.0.0.1:8000/movies/`).then(response => response.json()).then(data=>setMovie(data))
         .catch(error=>console.error("Error fetching movies", error));
     }, []);
@@ -37,14 +38,14 @@ const ShowForm = ()=>{
                     headers:{"Content-Type": "application/json",},
                     body: JSON.stringify(requestBody),
                 });
+                const data = await response.json()
+                console.log("Backend Response:", data);
                 if (response.ok){
                     setMessage("Show scheduled successfully!");
-                    setScreen({
-                        theatreId:"",
-                        movieId:"",
-                        showTypes:[],
-                        releaseDate:[]
-                    });
+                    setSelectedTheatre("");
+                    setSelectedMovie("");
+                    setSelectedShowType([]);
+                    setSelectedDates(today);
                 }
                 else{
                     setMessage("Error scheduling show. Please try again.");
@@ -69,7 +70,7 @@ const ShowForm = ()=>{
                 <label>Select Movie:</label>
                 <DropdownComponent
                 options={movie}
-                labelKey="movieName"
+                labelKey="movieTitle"
                 valueKey="movieId"
                 onChange={(value) => setSelectedMovie(value)}
                 />
