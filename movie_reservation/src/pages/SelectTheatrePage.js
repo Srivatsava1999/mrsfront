@@ -1,7 +1,7 @@
 import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import DropdownComponent from "../components/DropdownComponent";
-import NavbarComponent from "../components/NavbarComponent";
+import EnterpriseNavbarComponent from "../components/EnterpriseNavbarComponent";
 import "./SelectTheatrePage.css";
 
 const SelectTheatrePage=()=>{
@@ -16,7 +16,7 @@ const SelectTheatrePage=()=>{
       }, []);
     return (
         <section className="app-container">
-          <NavbarComponent/>
+          <EnterpriseNavbarComponent/>
           <main>
             <h1>Movie Reservation System</h1>
             <h2>Select Theatre</h2>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import NavbarComponent from "../components/NavbarComponent";
+import EnterpriseNavbarComponent from "../components/EnterpriseNavbarComponent";
 import "./DisplayAudi.css"; 
 
 const DisplayAudi = () => {
@@ -25,7 +25,7 @@ const DisplayAudi = () => {
 
     return (
         <section className="app-container">
-            <NavbarComponent />
+            <EnterpriseNavbarComponent />
             <main>
                 <h1>Movie Reservation System</h1>
                 <section className="seatlayoutcard">

@@ -1,17 +1,18 @@
 import React from "react";
-import NavbarComponent from "../components/NavbarComponents";
-import "./HomePage.css";
+import NavbarComponent from "../components/NavbarComponent.js";
+import LoginForm from "../components/LoginForm.js";
+import "./LoginPage.css";
 
-const HomePage =()=> {
+const LoginPage =()=> {
     return (
       <section className="app-container">
           <NavbarComponent/>
           <main>
             <h1>Movie Reservation System</h1>
-            <h2>Welcome!!!</h2>
+            <LoginForm/>
         </main>
       </section>
     );
   }
   
-  export default HomePage;
+  export default LoginPage;

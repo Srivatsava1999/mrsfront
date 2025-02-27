@@ -1,18 +1,17 @@
 import React from "react";
-import TheatreForm from "../components/TheatreForm";
 import EnterpriseNavbarComponent from "../components/EnterpriseNavbarComponent";
-import "./AddTheatre.css";
+import "./EnterpriseHomePage.css";
 
-const AddTheatre =()=> {
+const EnterpriseHomePage =()=> {
     return (
       <section className="app-container">
           <EnterpriseNavbarComponent/>
           <main>
             <h1>Movie Reservation System</h1>
-            <TheatreForm/>
+            <h2>Welcome!!!</h2>
         </main>
       </section>
     );
   }
   
-  export default AddTheatre;
+  export default EnterpriseHomePage;

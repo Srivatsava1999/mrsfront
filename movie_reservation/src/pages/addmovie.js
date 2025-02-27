@@ -1,12 +1,12 @@
 import React from "react";
 import MovieForm from "../components/MovieForm";
-import NavbarComponent from "../components/NavbarComponent";
+import EnterpriseNavbarComponent from "../components/EnterpriseNavbarComponent";
 import "./addmovie.css";
 
 const AddMovie =()=> {
     return (
       <section className="app-container">
-          <NavbarComponent/>
+          <EnterpriseNavbarComponent/>
           <main>
             <h1>Movie Reservation System</h1>
             <MovieForm/>
