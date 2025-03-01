@@ -3,6 +3,7 @@ import "./DropdownComponent.css";
 
 
 const DropdownComponent=({options,labelKey,valueKey, onChange})=>{
+    console.log(options);
     return (
         <select onChange={(e)=>onChange(e.target.value)}>
             <option value="">All</option>

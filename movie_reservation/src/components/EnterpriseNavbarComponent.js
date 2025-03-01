@@ -47,7 +47,7 @@ const EnterpriseNavbarComponent = () =>{
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="enterprise/add-movie" className="nav-link">
+                    <Link to="/enterprise/add-movie/" className="nav-link">
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         viewBox="0 0 512 512">
@@ -59,7 +59,7 @@ const EnterpriseNavbarComponent = () =>{
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="enterprise/add-theatre" className="nav-link">
+                    <Link to="/enterprise/add-theatre/" className="nav-link">
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         viewBox="0 0 512 512">

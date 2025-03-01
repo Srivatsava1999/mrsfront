@@ -21,15 +21,19 @@ function ScreenForm({theatreId}){
         event.preventDefault();
 
         try{
+            const requestBody={
+                ...screen,
+                refresh: user.refresh,
+                owner: user.user_id
+            };
             const response=await fetch(`http://127.0.0.1:8000/theatre/${Number(screen.theatreId)}/screen/`,
                 {
                     method: "POST",
                     headers:{
                         "Content-Type": "application/json",
-                        "Authorization":`Bearer ${user.access}`,
-                        "X-Refresh-Token": user.refresh,
+                        "Authorization":`Bearer ${user.access}`
                     },
-                    body: JSON.stringify(screen),
+                    body: JSON.stringify(requestBody),
                 });
                 if (response.ok){
                     setMessage("Screen added successfully!");
@@ -54,7 +58,7 @@ function ScreenForm({theatreId}){
 
     return (
         <section className="input_form">
-            <h2>Add Movie</h2>
+            <h2>Add Screen</h2>
             {message && <p>{message}</p>}
             <form onSubmit={handleSubmit}>
                 <label>Screen Number:</label>

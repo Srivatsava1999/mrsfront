@@ -4,6 +4,9 @@ import "./ShowForm.css";
 
 const ShowForm = ()=>{
     const user=JSON.parse(localStorage.getItem("user"));
+    const GETrequestBody={
+        refresh: user.refresh,
+    };
     const today = new Date().toISOString().split("T")[0];;
     const [movie,setMovie]=useState([]);
     const [theatre,setTheatre]=useState([]);
@@ -19,9 +22,8 @@ const ShowForm = ()=>{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`,
-                "X-Refresh-Token": user.refresh,
-            },
+                "Authorization":`Bearer ${user.access}`
+            },body: JSON.stringify(GETrequestBody),
         }).then(response => response.json()).then(data=>setTheatre(data))
         .catch(error=>console.error("Error fetching theatres", error));
     }, []);
@@ -30,16 +32,16 @@ const ShowForm = ()=>{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`,
-                "X-Refresh-Token": user.refresh,
-            },
+                "Authorization":`Bearer ${user.access}`
+            },,body: JSON.stringify(GETrequestBody),
         }).then(response => response.json()).then(data=>setMovie(data))
         .catch(error=>console.error("Error fetching movies", error));
     }, []);
     const handleSubmit= async(event)=>{
 
         event.preventDefault();
-        const requestBody = {
+        const POSTRequestBody = {
+            refresh: user.refresh,
             theatreId: selectedTheatre,
             movieId: selectedMovie,
             showTypes: selectedShowType,
@@ -50,8 +52,11 @@ const ShowForm = ()=>{
             const response=await fetch(`http://127.0.0.1:8000/theatre/${Number(selectedTheatre)}/show/`,
                 {
                     method: "POST",
-                    headers:{"Content-Type": "application/json",},
-                    body: JSON.stringify(requestBody),
+                    headers:{
+                        "Content-Type": "application/json",
+                        "Authorization":`Bearer ${user.access}`
+                    },
+                    body: JSON.stringify(POSTRequestBody),
                 });
                 const data = await response.json()
                 console.log("Backend Response:", data);

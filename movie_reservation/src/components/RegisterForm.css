@@ -11,17 +11,34 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   border-radius: 5px;
   border: 2px solid var(--main-color);
   box-shadow: 4px 4px var(--main-color);
+  /* overflow-y: auto; */
+  height: 70%;
+}
+.form ::-webkit-scrollbar{
+  width:8px;
+}
+.form::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.form::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.form::-webkit-scrollbar-thumb:hover {
+  background: #444451;
 }
 
 .title {
   color: var(--font-color);
   font-weight: 900;
   font-size: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
 }
 
 .title span {
@@ -55,28 +72,25 @@
 
 .register-with {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
 .button-log {
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 100%;
   border: 2px solid var(--main-color);
   background-color: var(--bg-color);
   box-shadow: 4px 4px var(--main-color);
   color: var(--font-color);
   font-size: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
-  fill: var(--main-color);
+  width: 50px;
+  height: 50px;
+  fill: var(--font-color);
 }
 
 .button-log:active, .button-confirm:active {
@@ -85,7 +99,7 @@
 }
 
 .button-confirm {
-  margin: 50px auto 0 auto;
+  margin: 20px auto 15px auto;
   width: 120px;
   height: 40px;
   border-radius: 5px;
@@ -97,23 +111,16 @@
   color: var(--font-color);
   cursor: pointer;
 }
-.separator {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-
-.separator > div {
-  width: 100px;
-  height: 3px;
+.button-login {
+  margin: 10px auto 0 auto;
+  width: 120px;
+  height: 40px;
   border-radius: 5px;
-  background-color: var(--font-color-sub);
-}
-
-.separator > span {
-  color: var(--font-color);
-  font-family: var(--font-SpaceMono);
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
   font-weight: 600;
+  color: var(--font-color);
+  cursor: pointer;
 }

@@ -19,15 +19,19 @@ function MovieForm(){
         event.preventDefault();
 
         try{
+            const requestBody={
+                ...movie,
+                refresh: user.refresh,
+                owner: user.user_id
+            };
             const response=await fetch("http://127.0.0.1:8000/movies/",
                 {
                     method: "POST",
                     headers:{
                         "Content-Type": "application/json",
-                        "Authorization":`Bearer ${user.access}`,
-                        "X-Refresh-Token": user.refresh,
+                        "Authorization":`Bearer ${user.access}`
                     },
-                    body: JSON.stringify(movie),
+                    body: JSON.stringify(requestBody),
                 });
                 if (response.ok){
                     setMessage("Movie added successfully!");

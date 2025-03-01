@@ -8,14 +8,17 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
     const [theatre,setTheatre]=useState([]);
     const user=JSON.parse(localStorage.getItem("user"));
     const navigate=useNavigate();
+    const requestBody={
+        refresh: user.refresh,
+    };
     useEffect(()=>{
         fetch(`http://127.0.0.1:8000/theatre/${theatreId}/screen/${screenId}/`,{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`,
-                "X-Refresh-Token": user.refresh,
+                "Authorization":`Bearer ${user.access}`
             },
+            body: JSON.stringify(requestBody),
         }).then(response=>response.json())
         .then(data=>{
             const { new_access_token, ...screenData}=data;
@@ -32,8 +35,7 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`,
-                "X-Refresh-Token": user.refresh,
+                "Authorization":`Bearer ${user.access}`
             },
         }).then(response=>response.json()).then(data=>{
             const {new_access_token, ...theatreData}=data;

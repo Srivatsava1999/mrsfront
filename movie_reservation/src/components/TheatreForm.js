@@ -19,15 +19,19 @@ function TheatreForm(){
         event.preventDefault();
 
         try{
+            const requestBody={
+                ...theatre,
+                refresh: user.refresh,
+                owner: user.user_id
+            };
             const response=await fetch("http://127.0.0.1:8000/theatres/",
                 {
                     method: "POST",
                     headers:{
                         "Content-Type": "application/json",
-                        "Authorization":`Bearer ${user.access}`,
-                        "X-Refresh-Token": user.refresh,
+                        "Authorization":`Bearer ${user.access}`
                     },
-                    body: JSON.stringify(theatre),
+                    body: JSON.stringify(requestBody),
                 });
                 if (response.ok){
                     setMessage("theatre added successfully!");
