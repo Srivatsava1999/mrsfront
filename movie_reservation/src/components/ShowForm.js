@@ -3,6 +3,7 @@ import DropdownComponent from "./DropdownComponent";
 import "./ShowForm.css";
 
 const ShowForm = ()=>{
+    const user=JSON.parse(localStorage.getItem("user"));
     const today = new Date().toISOString().split("T")[0];;
     const [movie,setMovie]=useState([]);
     const [theatre,setTheatre]=useState([]);
@@ -14,11 +15,25 @@ const ShowForm = ()=>{
     
 
     useEffect(()=>{
-        fetch(`http://127.0.0.1:8000/theatres/`).then(response => response.json()).then(data=>setTheatre(data))
+        fetch(`http://127.0.0.1:8000/theatres/`,{
+            method: "GET",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+            },
+        }).then(response => response.json()).then(data=>setTheatre(data))
         .catch(error=>console.error("Error fetching theatres", error));
     }, []);
     useEffect(()=>{
-        fetch(`http://127.0.0.1:8000/movies/`).then(response => response.json()).then(data=>setMovie(data))
+        fetch(`http://127.0.0.1:8000/movies/`,{
+            method: "GET",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+            },
+        }).then(response => response.json()).then(data=>setMovie(data))
         .catch(error=>console.error("Error fetching movies", error));
     }, []);
     const handleSubmit= async(event)=>{
@@ -46,6 +61,11 @@ const ShowForm = ()=>{
                     setSelectedMovie("");
                     setSelectedShowType([]);
                     setSelectedDates(today);
+                    const data= await response.json();
+                    if (data.new_access_token){
+                        user.access=data.new_access_token;
+                        localStorage.setItem("user", JSON.stringify(user));
+                    }
                 }
                 else{
                     setMessage("Error scheduling show. Please try again.");

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./MovieForm.css";
 function MovieForm(){
-
+    const user=JSON.parse(localStorage.getItem("user"));
     const [movie,setMovie]=useState({
         movieTitle:"",
         duration:"",
@@ -22,7 +22,11 @@ function MovieForm(){
             const response=await fetch("http://127.0.0.1:8000/movies/",
                 {
                     method: "POST",
-                    headers:{"Content-Type": "application/json",},
+                    headers:{
+                        "Content-Type": "application/json",
+                        "Authorization":`Bearer ${user.access}`,
+                        "X-Refresh-Token": user.refresh,
+                    },
                     body: JSON.stringify(movie),
                 });
                 if (response.ok){
@@ -33,6 +37,11 @@ function MovieForm(){
                         rating:"",
                         release_date:""
                     });
+                    const data= await response.json();
+                    if (data.new_access_token){
+                        user.access=data.new_access_token;
+                        localStorage.setItem("user", JSON.stringify(user));
+                    }
                 }
                 else{
                     setMessage("Error adding movie. Please try again.");

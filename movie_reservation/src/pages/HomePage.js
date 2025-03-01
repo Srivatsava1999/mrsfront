@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarComponent from "../components/NavbarComponents";
+import NavbarComponent from "../components/NavbarComponent";
 import "./HomePage.css";
 
 const HomePage =()=> {

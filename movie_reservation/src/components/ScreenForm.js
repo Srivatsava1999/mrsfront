@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import "./ScreenForm.css";
 function ScreenForm({theatreId}){
-
+    const user=JSON.parse(localStorage.getItem("user"))
     const [screen,setScreen]=useState({
         screenNum:"",
         capacity:"",
@@ -24,7 +24,11 @@ function ScreenForm({theatreId}){
             const response=await fetch(`http://127.0.0.1:8000/theatre/${Number(screen.theatreId)}/screen/`,
                 {
                     method: "POST",
-                    headers:{"Content-Type": "application/json",},
+                    headers:{
+                        "Content-Type": "application/json",
+                        "Authorization":`Bearer ${user.access}`,
+                        "X-Refresh-Token": user.refresh,
+                    },
                     body: JSON.stringify(screen),
                 });
                 if (response.ok){
@@ -34,6 +38,11 @@ function ScreenForm({theatreId}){
                         capacity:"",
                         theatreId: theatreId
                     });
+                    const data= await response.json();
+                    if (data.new_access_token){
+                        user.access=data.new_access_token;
+                        localStorage.setItem("user", JSON.stringify(user));
+                    }
                 }
                 else{
                     setMessage("Error adding screen. Please try again.");

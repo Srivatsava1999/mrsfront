@@ -5,14 +5,27 @@ import EnterpriseNavbarComponent from "../components/EnterpriseNavbarComponent";
 import "./SelectTheatrePage.css";
 
 const SelectTheatrePage=()=>{
-
+    const user=JSON.parse(localStorage.getItem("user"));
     const navigate=useNavigate()
     const [theatres,setTheatres]=useState([]);
     const [selectedTheatre, setSelectedTheatre]=useState("")
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/theatres/").then(response => response.json()).then(data=>setTheatres(data))
-        .catch(error=>console.error("Error fetching theatres", error));
+        fetch("http://127.0.0.1:8000/theatres/",{
+            method: "GET",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+            },
+        }).then(response => response.json()).then(data=>{
+            const {new_access_token, ...theatreData}=data;
+            setTheatres(theatreData);
+            if (data.new_access_token){
+                user.access=new_access_token;
+                localStorage.setItem("user", JSON.stringify(user));
+            }
+        }).catch(error=>console.error("Error fetching theatres", error));
       }, []);
     return (
         <section className="app-container">

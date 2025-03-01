@@ -4,15 +4,29 @@ import EnterpriseNavbarComponent from "../components/EnterpriseNavbarComponent";
 import "./DisplayAudi.css"; 
 
 const DisplayAudi = () => {
+    const user=JSON.parse(localStorage.getItem("user"))
     const { screenId } = useParams();
     const [seatDict, setSeatDict] = useState({});
     const [selectedSeats, setSelectedSeats] = useState(new Set());
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/screen/${screenId}/seats/`)
+        fetch(`http://127.0.0.1:8000/screen/${screenId}/seats/`,{
+            method: "GET",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+            },
+        })
             .then((response) => response.json())
-            .then((data) => setSeatDict(data.seat_layout))
-            .catch((error) => console.error("Error fetching Auditorium Layout", error));
+            .then((data) => {
+                const {new_access_token, ...seatData}=data;
+                setSeatDict(seatData.seat_layout);
+                if (data.new_access_token){
+                    user.access=new_access_token;
+                    localStorage.setItem("user", JSON.stringify(user));
+                }
+            }).catch((error) => console.error("Error fetching Auditorium Layout", error));
     }, [screenId]);
 
     const toggleSeatSelection = (seat) => {
