@@ -49,10 +49,9 @@ function App() {
         }
     }
   }
-  useEffect(()=>{
-    manageTabs();
-  },[]);
-  
+  // useEffect(()=>{
+  //   manageTabs();
+  // },[]);
   return (
       <BrowserRouter>
         <Routes>

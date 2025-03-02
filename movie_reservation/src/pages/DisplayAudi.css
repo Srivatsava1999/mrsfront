@@ -29,7 +29,7 @@
     fill: #221f1f;
   }
   main{
-    margin-left: 5rem;
+    margin-left: 3rem;
     padding: 1rem;
     text-align: center;
   }
@@ -42,24 +42,25 @@
     color: #ffffff;
   }
 .seatlayoutcard{
-    background-color: white;
+    background-color: #737373;
     border-radius: 2rem;
     width: 90%;
     height: 80%;
     overflow-y: auto;
     overflow-x: auto;
     padding: 1rem;
+    margin-left: 0;
   }
 .seatlayoutcard::-webkit-scrollbar {
     width: 8px;
 }
 
 .seatlayoutcard::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #737373;
 }
 
 .seatlayoutcard::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #e50419;
     border-radius: 4px;
 }
 
@@ -90,27 +91,27 @@
     width: 100%;
 }
 .seat {
-    background-color: #444451;
+    background-color: #221f1f;
     height: 1.6rem;
     width: 2rem;
     margin: 0.5rem;
     font-size: 50px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border: 6px solid #444451;
+    border: 6px solid #221f1f;
     font-size: 1rem;
     text-align: center;
-    color: aliceblue;
+    color: #ffffff;
   }
 .seat:hover{
-    background-color: white;
-    color: green;
+    background-color: #ffffff;
+    color: #e50419;
     border: 6px solid green;
 }
 .selected{
     background-color: green;
     border: green;
-    color: aliceblue;
+    color: #ffffff;
 }
 /* small screens */
 @media only screen and (max-width: 600px) {

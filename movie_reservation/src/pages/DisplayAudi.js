@@ -18,7 +18,8 @@ const DisplayAudi = () => {
             headers:{
                 "Content-Type": "application/json",
                 "Authorization":`Bearer ${user.access}`
-            },body: JSON.stringify(GETrequestBody),
+            },
+            // body: JSON.stringify(GETrequestBody),
         })
             .then((response) => response.json())
             .then((data) => {

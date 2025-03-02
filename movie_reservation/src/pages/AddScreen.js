@@ -13,7 +13,6 @@ const AddScreen =()=> {
           </style>
           <EnterpriseNavbarComponent/>
           <main>
-            <h1>Movie Reservation System</h1>
             <ScreenForm theatreId={theatreId}/>
         </main>
       </section>

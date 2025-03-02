@@ -6,6 +6,7 @@ const ShowForm = ()=>{
     const user=JSON.parse(localStorage.getItem("user"));
     const GETrequestBody={
         refresh: user.refresh,
+        owner: user.user_id,
     };
     const today = new Date().toISOString().split("T")[0];;
     const [movie,setMovie]=useState([]);
@@ -23,8 +24,13 @@ const ShowForm = ()=>{
             headers:{
                 "Content-Type": "application/json",
                 "Authorization":`Bearer ${user.access}`
-            },body: JSON.stringify(GETrequestBody),
-        }).then(response => response.json()).then(data=>setTheatre(data))
+            },
+            // body: JSON.stringify(GETrequestBody),
+        }).then(response => response.json()).then(data=>{
+            const {new_access_token, ...theatreData}=data;
+            const theatreArray = Object.values(theatreData);  
+            console.log("Converted theatres:", theatreArray);
+            setTheatre(theatreArray)})
         .catch(error=>console.error("Error fetching theatres", error));
     }, []);
     useEffect(()=>{
@@ -33,8 +39,13 @@ const ShowForm = ()=>{
             headers:{
                 "Content-Type": "application/json",
                 "Authorization":`Bearer ${user.access}`
-            },body: JSON.stringify(GETrequestBody),
-        }).then(response => response.json()).then(data=>setMovie(data))
+            },
+            // body: JSON.stringify(GETrequestBody),
+        }).then(response => response.json()).then(data=>{
+            const {new_access_token, ...movieData}=data;
+            const movieArray = Object.values(movieData);  
+            console.log("Converted theatres:", movieArray);
+            setMovie(movieArray)})
         .catch(error=>console.error("Error fetching movies", error));
     }, []);
     const handleSubmit= async(event)=>{
@@ -45,7 +56,8 @@ const ShowForm = ()=>{
             theatreId: selectedTheatre,
             movieId: selectedMovie,
             showTypes: selectedShowType,
-            releaseDate: selectedDates
+            releaseDate: selectedDates,
+            owner: user.user_id
         };        
 
         try{
@@ -66,7 +78,6 @@ const ShowForm = ()=>{
                     setSelectedMovie("");
                     setSelectedShowType([]);
                     setSelectedDates(today);
-                    const data= await response.json();
                     if (data.new_access_token){
                         user.access=data.new_access_token;
                         localStorage.setItem("user", JSON.stringify(user));
@@ -82,7 +93,7 @@ const ShowForm = ()=>{
 
     return (
         <section className="input_form">
-            <h2>Add Movie</h2>
+            <h2>Schedule Show</h2>
             {message && <p>{message}</p>}
             <form onSubmit={handleSubmit}>
                 <label>Select Theatre:</label>

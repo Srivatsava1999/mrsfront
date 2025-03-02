@@ -13,8 +13,6 @@ const ScheduleShow=()=>{
           </style>
         <EnterpriseNavbarComponent/>
         <main>
-          <h1>Movie Reservation System</h1>
-          <h2>Schedule Show</h2>
           <ShowForm />
       </main>
     </section>

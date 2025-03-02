@@ -20,10 +20,13 @@ const SelectScreen=()=>{
         headers:{
             "Content-Type": "application/json",
             "Authorization":`Bearer ${user.access}`
-        },body: JSON.stringify(GETrequestBody),
+        }
+        // ,body: JSON.stringify(GETrequestBody),
     }).then(response => response.json()).then(data=>{
       const {new_access_token, ...screenData}=data;
-      setScreens(screenData);
+            const screenArray = Object.values(screenData);  
+            console.log("Converted theatres:", screenArray);
+      setScreens(screenArray);
       if (data.new_access_token){
         user.access=new_access_token;
         localStorage.setItem("user", JSON.stringify(user));
@@ -36,8 +39,8 @@ const SelectScreen=()=>{
             @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
           </style>
         <EnterpriseNavbarComponent/>
-        <main>
-          <h1>Movie Reservation System</h1>
+        <main className="select-main">
+          <section className="selection">
           <h2>Select Screen</h2>
           <DropdownComponent
           options={screens}
@@ -45,6 +48,7 @@ const SelectScreen=()=>{
           valueKey="screenId"
           onChange={(value) => setSelectedScreen(value)}
           />
+          </section>
           {selectedScreen &&(
             <DisplayScreenComponent screenId={selectedScreen} theatreId={theatreId}/>
           )}

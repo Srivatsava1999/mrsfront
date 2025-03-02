@@ -28,7 +28,7 @@
   .app-container::-webkit-scrollbar-thumb{
     fill: #221f1f;
   }
-  .select-theatre-main{
+  .select-main{
     margin-left: 5rem;
     display: flex;
     flex-direction: column;

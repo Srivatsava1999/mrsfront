@@ -18,7 +18,7 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
                 "Content-Type": "application/json",
                 "Authorization":`Bearer ${user.access}`
             },
-            body: JSON.stringify(requestBody),
+            // body: JSON.stringify(requestBody),
         }).then(response=>response.json())
         .then(data=>{
             const { new_access_token, ...screenData}=data;
@@ -51,15 +51,13 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
         <section className="display_form">
             <h2>Screen Details</h2>
             {message && <p>{message}</p>}
-            <section className="form">
                 <p>Screen Number:</p>
                 <p>{screen.screenNum}</p>
                 <p>Screen Capacity:</p>
                 <p>{screen.capacity}</p>
                 <p>Theatre:</p>
                 <p>{theatre.theatreName}</p>
-            </section>
-            <button className="button-confirm"
+            <button className="button-display-audi"
                 onClick={() => navigate(`/screen/${screen.screenId}/seats/`)}
             >
                 Display Auditorium

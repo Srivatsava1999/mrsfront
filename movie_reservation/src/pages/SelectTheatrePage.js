@@ -20,7 +20,7 @@ const SelectTheatrePage=()=>{
                 "Content-Type": "application/json",
                 "Authorization":`Bearer ${user.access}`
             },
-            body: JSON.stringify(requestBody),
+            // body: JSON.stringify(requestBody),
         }).then(response => response.json()).then(data=>{
             const {new_access_token, ...theatreData}=data;
             const theatreArray = Object.values(theatreData);  
@@ -40,7 +40,7 @@ const SelectTheatrePage=()=>{
             @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
           </style>
           <EnterpriseNavbarComponent/>
-          <main className="select-theatre-main">
+          <main className="select-main">
             <section className="selection">
             <h2>Select Theatre</h2>
             <DropdownComponent
