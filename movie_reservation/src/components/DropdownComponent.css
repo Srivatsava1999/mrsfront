@@ -1,0 +1,14 @@
+select{
+    width: 250px;
+  height: 40px;
+  border-radius: 0.5rem;
+  border: 2px solid #737373;
+  background-color: #221f1f;
+  box-shadow: 4px 4px #737373;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 5px 10px;
+  outline: none;
+  margin: 0.5rem auto;
+}

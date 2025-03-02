@@ -33,7 +33,7 @@ const ShowForm = ()=>{
             headers:{
                 "Content-Type": "application/json",
                 "Authorization":`Bearer ${user.access}`
-            },,body: JSON.stringify(GETrequestBody),
+            },body: JSON.stringify(GETrequestBody),
         }).then(response => response.json()).then(data=>setMovie(data))
         .catch(error=>console.error("Error fetching movies", error));
     }, []);
@@ -110,7 +110,7 @@ const ShowForm = ()=>{
                     <option value={4}>Second Show</option>
                 </select>
                 <input type="date" id="releaseDate" name="Release Date" value={selectedDates} onChange={(e)=>setSelectedDates(e.target.value)}/>
-                <button type="submit">Schedule Show</button>
+                <button type="submit" className="button-confirm">Schedule Show</button>
             </form>
         </section>
     );

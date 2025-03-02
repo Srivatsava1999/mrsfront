@@ -5,60 +5,61 @@
     font-size: 16px;
     color:#b6b6b6;
     --transition-speed: 600ms ;
-}
-h1{
-    font-size: 4rem;
-    color: #ececec;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
-}
-main{
+    font-family: "YOUNG SERIF";
+  }
+  .app-container{
+    background-image: url("../assets/mrslogo.svg");
+      background-color: #141414;
+      background-size: cover;
+      background-size: contain;
+      height: 100vh;
+      margin: auto;
+      background-repeat: no-repeat;
+      background-position: center;
+      overflow: hidden;
+  }
+  .app-container::-webkit-scrollbar{
+    width: 0.25rem;
+    fill: #141414;
+  }
+  .app-container::-webkit-scrollbar-track{
+    fill: #141414;
+  }
+  .app-container::-webkit-scrollbar-thumb{
+    fill: #221f1f;
+  }
+  main{
     margin-left: 5rem;
-    margin-right: 0rem;
     padding: 1rem;
     text-align: center;
-    width:100vw;
-    height: 100vh;
-}
-.app-container{
-    background-image: url("../assets/mrsbackground.jpg");
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
-    overflow: hidden;
-}
-.app-container::-webkit-scrollbar{
-    width: 0.25rem;
-}
-.app-container::-webkit-scrollbar-track{
-    background: #1e1e24;
-}
-.app-container::-webkit-scrollbar-thumb{
-    background: #6649b8;
-}
-h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  h1{
     font-size: 3rem;
-    color: #ececec;
-}
-@media only screen and (max-width: 600px) {
+    color: #ffffff;
+  }
+  h2{
+    font-size: 2rem;
+    color: #ffffff;
+  }
+  /* small screens */
+  @media only screen and (max-width: 600px) {
     .app-container{
-        background-image: none;
-        background-color: navy;
-        height: 100vh;
+      background-image: url("../assets/mrslogo.svg");
+      background-color: #000000;
+      background-size: contain;
+      height: 100vh;
+      margin: auto;
+      background-repeat: no-repeat;
+      background-position: center;
+      overflow-x: hidden;
     }
     main {
-        margin: 0;
-        width: 100%;
-      }
-    h1{
-          font-size: 1.8rem;
-          margin-top: 5rem;
+      margin: 0;
     }
-}
-/* large screens */
-@media screen and (min-width:600px) {
-}
+  }
+  /* large screens */
+  @media screen and (min-width:600px) {
+  }

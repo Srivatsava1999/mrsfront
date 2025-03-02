@@ -36,9 +36,12 @@ const SelectTheatrePage=()=>{
       }, []);
     return (
         <section className="app-container">
+            <style>
+            @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+          </style>
           <EnterpriseNavbarComponent/>
-          <main>
-            <h1>Movie Reservation System</h1>
+          <main className="select-theatre-main">
+            <section className="selection">
             <h2>Select Theatre</h2>
             <DropdownComponent
             options={theatres}
@@ -46,6 +49,8 @@ const SelectTheatrePage=()=>{
             valueKey="theatreId"
             onChange={(value) => setSelectedTheatre(value)}
             />
+            </section>
+            <section className="buttons">
             <button
                 onClick={() => navigate(`/select-screen/${selectedTheatre}/screen/`)}
                 disabled={!selectedTheatre}
@@ -59,6 +64,7 @@ const SelectTheatrePage=()=>{
             >
                 Add Screen
             </button>
+            </section>
         </main>
       </section>
     );

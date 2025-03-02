@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import DropdownComponent from "../components/DropdownComponent";
 import EnterpriseNavbarComponent from "../components/EnterpriseNavbarComponent";
 import DisplayScreenComponent from "../components/DisplayScreenComponent";
@@ -32,6 +32,9 @@ const SelectScreen=()=>{
     }, []);
   return (
       <section className="app-container">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+          </style>
         <EnterpriseNavbarComponent/>
         <main>
           <h1>Movie Reservation System</h1>

@@ -59,7 +59,7 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
                 <p>Theatre:</p>
                 <p>{theatre.theatreName}</p>
             </section>
-            <button
+            <button className="button-confirm"
                 onClick={() => navigate(`/screen/${screen.screenId}/seats/`)}
             >
                 Display Auditorium

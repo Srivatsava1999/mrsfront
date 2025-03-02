@@ -5,10 +5,17 @@
   font-size: 16px;
   color:#b6b6b6;
   --transition-speed: 600ms ;
+  font-family: "YOUNG SERIF";
 }
 .app-container{
-  background-image: url("../assets/mrsbackground.jpg");
-  background-size: cover;
+  background-image: url("../assets/mrslogofinal.svg");
+    background-color: #141414;
+    background-size: cover;
+    background-size: contain;
+    height: 100vh;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .app-container::-webkit-scrollbar{
   width: 0.25rem;
@@ -20,23 +27,35 @@
   background: #6649b8;
 }
 main{
-  margin-left: 5rem;
+  margin-left: 3rem;
+  margin-right: 0rem;
   padding: 1rem;
   text-align: center;
+  width:100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-h1{
+.welcome-tag{
   font-size: 3rem;
-  color: #ececec;
+  color: #ffffff;
+  margin: 38% 45% 15rem auto;
 }
 h2{
   font-size: 2rem;
-  color: #ececec;
+  color: #ffffff;
 }
 /* small screens */
 @media only screen and (max-width: 600px) {
   .app-container{
-      background-image: none;
-      background-color: navy;
+    background-image: url("../assets/mrslogo.svg");
+    background-color: #000000;
+    background-size: contain;
+    height: 100vh;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   main {
     margin: 0;

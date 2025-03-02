@@ -1,6 +1,6 @@
 .display_form{
     display: flex;
-    background-color: #171717;
+    background-color: #221f1f;
     flex-direction: column;
     justify-content: center;
     margin:auto;
@@ -11,7 +11,7 @@
 }
 .display_form:hover{
     transform: scale(1.05);
-    box-shadow:(0 6px 20px #23232e);
+    box-shadow:(0 6px 20px #141414);
     transition: transform var(--transition-speed) ease-in-out;
 }
 .form{
@@ -21,26 +21,27 @@
 }
 p{
     font-size: 1.5rem;
-    color: #b6b6b6;
+    color: #ffffff;
 }
 p:hover{
-    color: #df49a6;
+    color: #e50914;
 }
-button{
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #d3d3d3;
+.button-confirm {
+    margin: 30px auto 15px auto;
+    width: 120px;
+    height: 40px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
     border-radius: 1rem;
-    margin:auto;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    width: 70%;
-    padding: 1rem;
-    background-color: #171717;
-}
+  }
 button:hover {
-    background-color: black;
-    color: white;
+    background-color: #141414;
+    color: #e50914;
   }
 /* small screens */
 @media only screen and (max-width: 600px) {  

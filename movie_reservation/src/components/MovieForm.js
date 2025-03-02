@@ -69,7 +69,7 @@ function MovieForm(){
                 <label>Release Date:</label>
                 <input placeholder="Release Date" type="date" name="release_date" value={movie.release_date} onChange={handleChange} required/>
 
-                <button type="submit">Add Movie</button>
+                <button type="submit" className="button-confirm">Add Movie</button>
 
             </form>
         </section>

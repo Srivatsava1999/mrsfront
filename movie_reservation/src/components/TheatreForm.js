@@ -69,7 +69,7 @@ function TheatreForm(){
                 <label>State</label>
                 <input type="text" name="locationState" value={theatre.locationState} onChange={handleChange} required/>
 
-                <button type="submit">Add Theatre</button>
+                <button type="submit" className="button-confirm">Add Theatre</button>
 
             </form>
         </section>

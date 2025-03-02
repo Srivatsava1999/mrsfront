@@ -68,7 +68,7 @@ function ScreenForm({theatreId}){
                 <label>Selected Theatre:</label>
                 <p>{screen.theatreName}</p>
 
-                <button type="submit">Add Screen</button>
+                <button type="submit" className="button-confirm">Add Screen</button>
 
             </form>
         </section>

@@ -98,7 +98,7 @@ const LoginForm=()=>{
             </button>
         </div>
         <button className="button-confirm" onClick={handleSubmit}>Let`s go →</button>
-        <span>New here?</span>
+        <span className="registerspan">New here?</span>
         <button className="button-register" onClick={handleRegister}>Register</button>
         </form>
     );

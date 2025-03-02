@@ -41,9 +41,11 @@ const DisplayAudi = () => {
 
     return (
         <section className="app-container">
+            <style>
+            @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+          </style>
             <EnterpriseNavbarComponent />
             <main>
-                <h1>Movie Reservation System</h1>
                 <section className="seatlayoutcard">
                     <section className="screen"></section>
                     <section className="seatmap">

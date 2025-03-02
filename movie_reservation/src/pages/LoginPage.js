@@ -6,9 +6,11 @@ import "./LoginPage.css";
 const LoginPage =()=> {
     return (
       <section className="app-container">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+          </style>
           <NavbarComponent/>
           <main>
-            <h1>Movie Reservation System</h1>
             <LoginForm/>
         </main>
       </section>

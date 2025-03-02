@@ -14,6 +14,7 @@ import ScheduleShow from './pages/ScheduleShow';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
+import HandleLogout from './pages/HandleLogout';
 
 function App() {
   const manageTabs =()=>{
@@ -58,7 +59,7 @@ function App() {
           <Route path="/" element={<HomePage/>}></Route>
           <Route path='/login/' element={<LoginPage/>}></Route>
           <Route path='/register/' element={<RegisterPage/>}></Route>
-          
+          <Route path='/logout/' element={<HandleLogout/>}></Route>
           {/* Enterprise Routes */}
           <Route path="/enterprise/" element={<EnterpriseHomePage/>}></Route>
           <Route path="/enterprise/add-movie/" element={<AddMovie />} />

@@ -91,6 +91,12 @@ const RegisterForm=()=>{
         <input type="password" placeholder="Password" name="password" value={register.password} className="input" onChange={handleChange}/>
         <input type="text" placeholder="Name" name="name" value={register.name} className="input" onChange={handleChange}/>
         <input type="text" placeholder="Phone" name="phone" value={register.phone} className="input" onChange={handleChange}/>
+        <DropdownComponent
+            options={roleOptions}
+            labelKey="roleName"
+            valueKey="role"
+            onChange={(value) => setRegister({...register,role:value})}
+            className="input"/>
         <div className="register-with">
             <button className="button-log" onClick={handleOAuth}>
             <svg 
@@ -103,15 +109,10 @@ const RegisterForm=()=>{
                 </path>  
                 </svg>
             </button>
-            <DropdownComponent
-            options={roleOptions}
-            labelKey="roleName"
-            valueKey="role"
-            onChange={(value) => setRegister({...register,role:value})}
-            className="input"/>
+            
         </div>
         <button className="button-confirm" onClick={handleSubmit}>Let`s go →</button>
-        <span>Already have an account</span>
+        <span className="registerspan">Already have an account</span>
         <button className="button-login" onClick={handleLogin}>Log In</button>
         </form>
     );
