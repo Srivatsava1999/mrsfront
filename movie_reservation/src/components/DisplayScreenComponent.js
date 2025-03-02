@@ -16,7 +16,9 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+                "X-User-Id": user.user_id
             },
             // body: JSON.stringify(requestBody),
         }).then(response=>response.json())
@@ -35,7 +37,9 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+                "X-User-Id": user.user_id
             },
         }).then(response=>response.json()).then(data=>{
             const {new_access_token, ...theatreData}=data;

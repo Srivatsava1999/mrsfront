@@ -4,10 +4,6 @@ import "./ShowForm.css";
 
 const ShowForm = ()=>{
     const user=JSON.parse(localStorage.getItem("user"));
-    const GETrequestBody={
-        refresh: user.refresh,
-        owner: user.user_id,
-    };
     const today = new Date().toISOString().split("T")[0];;
     const [movie,setMovie]=useState([]);
     const [theatre,setTheatre]=useState([]);
@@ -23,13 +19,13 @@ const ShowForm = ()=>{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+                "X-User-Id": user.user_id
             },
-            // body: JSON.stringify(GETrequestBody),
         }).then(response => response.json()).then(data=>{
             const {new_access_token, ...theatreData}=data;
             const theatreArray = Object.values(theatreData);  
-            console.log("Converted theatres:", theatreArray);
             setTheatre(theatreArray)})
         .catch(error=>console.error("Error fetching theatres", error));
     }, []);
@@ -38,13 +34,13 @@ const ShowForm = ()=>{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+                "X-User-Id": user.user_id
             },
-            // body: JSON.stringify(GETrequestBody),
         }).then(response => response.json()).then(data=>{
             const {new_access_token, ...movieData}=data;
             const movieArray = Object.values(movieData);  
-            console.log("Converted theatres:", movieArray);
             setMovie(movieArray)})
         .catch(error=>console.error("Error fetching movies", error));
     }, []);
@@ -52,12 +48,10 @@ const ShowForm = ()=>{
 
         event.preventDefault();
         const POSTRequestBody = {
-            refresh: user.refresh,
             theatreId: selectedTheatre,
             movieId: selectedMovie,
             showTypes: selectedShowType,
             releaseDate: selectedDates,
-            owner: user.user_id
         };        
 
         try{
@@ -66,12 +60,13 @@ const ShowForm = ()=>{
                     method: "POST",
                     headers:{
                         "Content-Type": "application/json",
-                        "Authorization":`Bearer ${user.access}`
+                        "Authorization":`Bearer ${user.access}`,
+                        "X-Refresh-Token": user.refresh,
+                        "X-User-Id": user.user_id
                     },
                     body: JSON.stringify(POSTRequestBody),
                 });
                 const data = await response.json()
-                console.log("Backend Response:", data);
                 if (response.ok){
                     setMessage("Show scheduled successfully!");
                     setSelectedTheatre("");

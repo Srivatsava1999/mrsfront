@@ -9,24 +9,20 @@ const HandleLogout=()=>{
     }, []);
     const logout=async()=>{
         try{
-        const requestBody={refresh: user.refresh,owner: user.user_id};
         const response=await fetch("http://127.0.0.1:8000/logout/",
             {
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json",
-                    "Authorization":`Bearer ${user.access}`
+                    "Authorization":`Bearer ${user.access}`,
+                    "X-Refresh-Token": user.refresh,
+                    "X-User-Id": user.user_id
                 },
-                body: JSON.stringify(requestBody),
+                body: JSON.stringify(localStorage.getItem("user")),
             });
             if (response.ok){
                 console.log("Logged out added successfully!");
                 navigate("/login/");
-                const data= await response.json();
-                    if (data.new_access_token){
-                        user.access=data.new_access_token;
-                        localStorage.setItem("user", JSON.stringify(user));
-                    }
             }
             else{
                 console.log("Client error");

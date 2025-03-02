@@ -7,9 +7,6 @@ import "./SelectScreen.css";
 
 const SelectScreen=()=>{
   const user=JSON.parse(localStorage.getItem("user"));
-  const GETrequestBody={
-    refresh: user.refresh,
-};
   const {theatreId}=useParams()
   const [screens,setScreens]=useState([]);
   const [selectedScreen, setSelectedScreen]=useState("")
@@ -19,13 +16,13 @@ const SelectScreen=()=>{
         method: "GET",
         headers:{
             "Content-Type": "application/json",
-            "Authorization":`Bearer ${user.access}`
+            "Authorization":`Bearer ${user.access}`,
+            "X-Refresh-Token": user.refresh,
+            "X-User-Id": user.user_id
         }
-        // ,body: JSON.stringify(GETrequestBody),
     }).then(response => response.json()).then(data=>{
       const {new_access_token, ...screenData}=data;
             const screenArray = Object.values(screenData);  
-            console.log("Converted theatres:", screenArray);
       setScreens(screenArray);
       if (data.new_access_token){
         user.access=new_access_token;

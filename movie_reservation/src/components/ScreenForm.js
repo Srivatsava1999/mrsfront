@@ -7,6 +7,26 @@ function ScreenForm({theatreId}){
         capacity:"",
         theatreId: theatreId
     });
+    const [theatre, setTheatre]=useState("");
+    useEffect(()=>{
+        fetch(`http://127.0.0.1:8000/theatres/${screen.theatreId}/`,{
+            method: "GET",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+                "X-User-Id": user.user_id
+            },
+        }).then(response => response.json()).then(data=>{
+            const {new_access_token, ...theatreData}=data; 
+            setTheatre(theatreData);
+                if(new_access_token){
+                    user.access=new_access_token;
+                    localStorage.setItem("user", JSON.stringify(user));
+                }
+            })
+        .catch(error=>console.error("Error fetching theatres", error));
+    }, []);
     useEffect(() => {
         setScreen((prev) => ({ ...prev, theatreId }));
     }, [theatreId]);
@@ -21,19 +41,16 @@ function ScreenForm({theatreId}){
         event.preventDefault();
 
         try{
-            const requestBody={
-                ...screen,
-                refresh: user.refresh,
-                owner: user.user_id
-            };
             const response=await fetch(`http://127.0.0.1:8000/theatre/${Number(screen.theatreId)}/screen/`,
                 {
                     method: "POST",
                     headers:{
                         "Content-Type": "application/json",
-                        "Authorization":`Bearer ${user.access}`
+                        "Authorization":`Bearer ${user.access}`,
+                        "X-Refresh-Token": user.refresh,
+                        "X-User-Id": user.user_id
                     },
-                    body: JSON.stringify(requestBody),
+                    body: JSON.stringify(screen),
                 });
                 if (response.ok){
                     setMessage("Screen added successfully!");
@@ -66,7 +83,7 @@ function ScreenForm({theatreId}){
                 <label>Capacity:</label>
                 <input placeholder="Capacity" type="number" name="capacity" value={screen.capacity} onChange={handleChange} required/>
                 <label>Selected Theatre:</label>
-                <p>{screen.theatreName}</p>
+                <p>{theatre.theatreName}</p>
 
                 <button type="submit" className="button-confirm">Add Screen</button>
 

@@ -4,10 +4,7 @@ import EnterpriseNavbarComponent from "../components/EnterpriseNavbarComponent";
 import "./DisplayAudi.css"; 
 
 const DisplayAudi = () => {
-    const user=JSON.parse(localStorage.getItem("user"))
-    const GETrequestBody={
-        refresh: user.refresh,
-    };
+    const user=JSON.parse(localStorage.getItem("user"));
     const { screenId } = useParams();
     const [seatDict, setSeatDict] = useState({});
     const [selectedSeats, setSelectedSeats] = useState(new Set());
@@ -17,9 +14,10 @@ const DisplayAudi = () => {
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`
+                "Authorization":`Bearer ${user.access}`,
+                "X-Refresh-Token": user.refresh,
+                "X-User-Id": user.user_id
             },
-            // body: JSON.stringify(GETrequestBody),
         })
             .then((response) => response.json())
             .then((data) => {
