@@ -10,7 +10,7 @@ const DisplayAudi = () => {
     const [selectedSeats, setSelectedSeats] = useState(new Set());
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/screen/${screenId}/seats/`,{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/screen/${screenId}/seats/`,{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",

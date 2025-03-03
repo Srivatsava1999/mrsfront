@@ -19,7 +19,7 @@ function MovieForm(){
         event.preventDefault();
 
         try{
-            const response=await fetch("http://127.0.0.1:8000/movies/",
+            const response=await fetch(`${process.env.REACT_APP_BASE_API_URL}/movies/`,
                 {
                     method: "POST",
                     headers:{

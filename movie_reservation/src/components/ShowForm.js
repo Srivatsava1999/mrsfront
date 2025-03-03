@@ -14,7 +14,7 @@ const ShowForm = ()=>{
     
 
     useEffect(()=>{
-        fetch(`http://127.0.0.1:8000/theatres/`,{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/theatres/`,{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const ShowForm = ()=>{
         .catch(error=>console.error("Error fetching theatres", error));
     }, []);
     useEffect(()=>{
-        fetch(`http://127.0.0.1:8000/movies/`,{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/movies/`,{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const ShowForm = ()=>{
         };        
 
         try{
-            const response=await fetch(`http://127.0.0.1:8000/theatre/${Number(selectedTheatre)}/show/`,
+            const response=await fetch(`${process.env.REACT_APP_BASE_API_URL}/theatre/${Number(selectedTheatre)}/show/`,
                 {
                     method: "POST",
                     headers:{

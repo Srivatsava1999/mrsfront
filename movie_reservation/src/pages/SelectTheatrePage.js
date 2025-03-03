@@ -11,7 +11,7 @@ const SelectTheatrePage=()=>{
     const [selectedTheatre, setSelectedTheatre]=useState("")
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/theatres/",{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/theatres/`,{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",

@@ -9,7 +9,7 @@ function ScreenForm({theatreId}){
     });
     const [theatre, setTheatre]=useState("");
     useEffect(()=>{
-        fetch(`http://127.0.0.1:8000/theatres/${screen.theatreId}/`,{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/theatres/${screen.theatreId}/`,{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
@@ -41,7 +41,7 @@ function ScreenForm({theatreId}){
         event.preventDefault();
 
         try{
-            const response=await fetch(`http://127.0.0.1:8000/theatre/${Number(screen.theatreId)}/screen/`,
+            const response=await fetch(`${process.env.REACT_APP_BASE_API_URL}/theatre/${Number(screen.theatreId)}/screen/`,
                 {
                     method: "POST",
                     headers:{

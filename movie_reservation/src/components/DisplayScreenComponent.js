@@ -12,7 +12,7 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
         refresh: user.refresh,
     };
     useEffect(()=>{
-        fetch(`http://127.0.0.1:8000/theatre/${theatreId}/screen/${screenId}/`,{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/theatre/${theatreId}/screen/${screenId}/`,{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
         .catch(error=>console.error("error fetching screen details",error));
     },[]);
     useEffect(()=>{
-        fetch(`http://127.0.0.1:8000/theatres/${theatreId}/`,{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/theatres/${theatreId}/`,{
             method: "GET",
             headers:{
                 "Content-Type": "application/json",

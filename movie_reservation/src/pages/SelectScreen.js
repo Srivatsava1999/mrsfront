@@ -12,7 +12,7 @@ const SelectScreen=()=>{
   const [selectedScreen, setSelectedScreen]=useState("")
 
   useEffect(() => {
-      fetch(`http://127.0.0.1:8000/theatre/${theatreId}/screen/`,{
+      fetch(`${process.env.REACT_APP_BASE_API_URL}/theatre/${theatreId}/screen/`,{
         method: "GET",
         headers:{
             "Content-Type": "application/json",
