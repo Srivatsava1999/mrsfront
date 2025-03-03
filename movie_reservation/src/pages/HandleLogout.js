@@ -9,6 +9,7 @@ const HandleLogout=()=>{
     }, []);
     const logout=async()=>{
         try{
+            console.log(user.refresh)
         const response=await fetch("http://127.0.0.1:8000/logout/",
             {
                 method: "POST",
@@ -20,8 +21,14 @@ const HandleLogout=()=>{
                 },
                 body: JSON.stringify(localStorage.getItem("user")),
             });
+            const data=await response.json()
+            const {new_access_tokens, ...rest}=data
             if (response.ok){
                 console.log("Logged out added successfully!");
+                if (new_access_tokens){
+                    user.access=new_access_tokens
+                    localStorage.setItem("user", JSON.stringify(user))
+                }
                 navigate("/login/");
             }
             else{

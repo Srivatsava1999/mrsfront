@@ -9,7 +9,6 @@ const ShowForm = ()=>{
     const [theatre,setTheatre]=useState([]);
     const [selectedMovie, setSelectedMovie]=useState("");
     const [selectedTheatre, setSelectedTheatre]=useState("");
-    const [selectedShowType, setSelectedShowType]=useState([]);
     const [selectedDates, setSelectedDates]=useState(today);
     const [message, setMessage]=useState("");
     
@@ -50,7 +49,6 @@ const ShowForm = ()=>{
         const POSTRequestBody = {
             theatreId: selectedTheatre,
             movieId: selectedMovie,
-            showTypes: selectedShowType,
             releaseDate: selectedDates,
         };        
 
@@ -71,7 +69,6 @@ const ShowForm = ()=>{
                     setMessage("Show scheduled successfully!");
                     setSelectedTheatre("");
                     setSelectedMovie("");
-                    setSelectedShowType([]);
                     setSelectedDates(today);
                     if (data.new_access_token){
                         user.access=data.new_access_token;
@@ -105,18 +102,9 @@ const ShowForm = ()=>{
                 valueKey="movieId"
                 onChange={(value) => setSelectedMovie(value)}
                 />
-                <label>Selected Show Type:</label>
-                <select name="ShowType" id="ShowType" multiple onChange={(e)=>{
-                    const selectedOptions=[...e.target.selectedOptions].map(option=>option.value);
-                    setSelectedShowType(selectedOptions);
-                }}>
-                    <option value={1}>Morning Show</option>
-                    <option value={2}>Matinee Show</option>
-                    <option value={3}>First Show</option>
-                    <option value={4}>Second Show</option>
-                </select>
+                <label>Release Date:</label>
                 <input type="date" id="releaseDate" name="Release Date" value={selectedDates} onChange={(e)=>setSelectedDates(e.target.value)}/>
-                <button type="submit" className="button-confirm">Schedule Show</button>
+                <button type="submit" className="button-schedule">Schedule Show</button>
             </form>
         </section>
     );

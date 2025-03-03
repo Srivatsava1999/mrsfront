@@ -18,6 +18,7 @@
     width: 30%;
     border-radius: 1rem;
     transition: 150ms ease-in-out;
+    margin: 3% 13% auto 0;
 }
 p{
     font-size: 1.5rem;

@@ -18,6 +18,7 @@
   /* overflow-y: auto; */
   height: 70%;
   width: 30%;
+  margin: auto 9% auto 0;
 }
 .form ::-webkit-scrollbar{
   width:8px;
