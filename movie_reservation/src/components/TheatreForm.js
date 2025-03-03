@@ -6,7 +6,8 @@ function TheatreForm(){
         theatreName:"",
         address:"",
         locationCity:"",
-        locationState:""
+        locationState:"",
+        owner: user.user_id
     });
     const [message, setMessage]=useState("");
 
@@ -36,7 +37,8 @@ function TheatreForm(){
                         theatreName:"",
                         address:"",
                         locationCity:"",
-                        locationState:""
+                        locationState:"",
+                        owner: user.user_id
                     });
                     const data= await response.json();
                     if (data.new_access_token){
