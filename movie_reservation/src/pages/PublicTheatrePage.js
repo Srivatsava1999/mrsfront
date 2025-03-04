@@ -2,32 +2,23 @@ import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import DropdownComponent from "../components/DropdownComponent";
 import EnterpriseNavbarComponent from "../components/EnterpriseNavbarComponent";
-import "./SelectTheatrePage.css";
+import "./PublicTheatrePage.css";
 
-const SelectTheatrePage=()=>{
-    const user=JSON.parse(localStorage.getItem("user"));
+const PublicTheatrePage=()=>{
     const navigate=useNavigate()
     const [theatres,setTheatres]=useState([]);
     const [selectedTheatre, setSelectedTheatre]=useState("")
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BASE_API_URL}/theatres/`,{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/theatresall/`,{
             method: "GET",
             headers:{
-                "Content-Type": "application/json",
-                "Authorization":`Bearer ${user.access}`,
-                "X-Refresh-Token": user.refresh,
-                "X-User-Id": user.user_id
+                "Content-Type": "application/json"
             },
         }).then(response => response.json()).then(data=>{
-            const {new_access_token, ...theatreData}=data;
-            const theatreArray = Object.values(theatreData);  
-            setTheatres(theatreArray);
-            if (data.new_access_token){
-                user.access=new_access_token;
-                localStorage.setItem("user", JSON.stringify(user));
-            }
-        }).catch(error=>console.error("Error fetching theatres", error));
+            const theatreArray=Object.values(data);
+            setTheatres(theatreArray);})
+        .catch(error=>console.error("Error fetching theatres", error));
       }, []);
     return (
         <section className="app-container">
@@ -47,17 +38,10 @@ const SelectTheatrePage=()=>{
             </section>
             <section className="buttons">
             <button
-                onClick={() => navigate(`/select-screen/${selectedTheatre}/screen/`)}
+                onClick={() => navigate(`/select-screen/${selectedTheatre}/publicscreen/`)}
                 disabled={!selectedTheatre}
             >
-                Select Screen
-            </button>
-
-            <button
-                onClick={() => navigate(`/theatre/${selectedTheatre}/screen/`)}
-                disabled={!selectedTheatre}
-            >
-                Add Screen
+                View Shows
             </button>
             </section>
         </main>
@@ -65,4 +49,4 @@ const SelectTheatrePage=()=>{
     );
 }
 
-export default SelectTheatrePage
+export default PublicTheatrePage

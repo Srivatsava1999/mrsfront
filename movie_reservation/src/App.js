@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { useEffect } from 'react';
@@ -15,6 +14,8 @@ import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import HandleLogout from './pages/HandleLogout';
+import PublicTheatrePage from './pages/PublicTheatrePage';
+import PublicShowPage from './pages/PublicShowPage';
 
 function App() {
   const manageTabs =()=>{
@@ -68,6 +69,9 @@ function App() {
           <Route path='/select-screen/:theatreId/screen/' element={<SelectScreen/>}></Route>
           <Route path='/screen/:screenId/seats/' element={<DisplayAudi/>}></Route>
           <Route path='/scheduleshow/' element={<ScheduleShow/>}></Route>
+          {/* Public Routes */}
+          <Route path='/publictheatres/' element={<PublicTheatrePage/>}></Route>
+          <Route path='/view-shows/:theatreId/' element={<PublicShowPage/>}></Route>
         </Routes>
       </BrowserRouter>
     
