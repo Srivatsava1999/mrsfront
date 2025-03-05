@@ -63,7 +63,7 @@ const RegisterForm=()=>{
 
     const handleOAuth= ()=>{
         const GOOGLE_OAUTH_URL='https://accounts.google.com/o/oauth2/v2/auth';
-        const REDIRECT_URI='oauth2-register/';
+        const REDIRECT_URI='oauth2-login/';
         const scope=[
             'https://www.googleapis.com/auth/userinfo.email',
             'https://www.googleapis.com/auth/userinfo.profile'
@@ -71,7 +71,7 @@ const RegisterForm=()=>{
         const params={
             response_type:'code',
             client_id: process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID,
-            redirect_uri: `${process.env.REACT_APP_BASE_API_URL}?${REDIRECT_URI}`,
+            redirect_uri: `${process.env.REACT_APP_BASE_API_URL}/${REDIRECT_URI}`,
             prompt: 'select_account',
             access_type:'offline',
             scope
@@ -98,7 +98,7 @@ const RegisterForm=()=>{
             onChange={(value) => setRegister({...register,role:value})}
             className="input"/>
         <div className="register-with">
-            <button className="button-log" onClick={handleOAuth}>
+            <button type="button" className="button-log" onClick={handleOAuth}>
             <svg 
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 488 512" className="icon">

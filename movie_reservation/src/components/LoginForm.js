@@ -27,6 +27,7 @@ const LoginForm=()=>{
                         email:"",
                         password:""
                     });
+                    console.log(message)
                     const data=await response.json();
                     const userData = {
                         user_id: data.user_id,
@@ -50,6 +51,7 @@ const LoginForm=()=>{
                     setMessage("Server error. Please check your backend");
                 }
     };
+    
 
     const handleChange=(event)=>{
         const{name,value}=event.target;
@@ -66,7 +68,7 @@ const LoginForm=()=>{
         const params={
             response_type:'code',
             client_id: process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID,
-            redirect_uri: `${process.env.REACT_APP_BASE_API_URL}?${REDIRECT_URI}`,
+            redirect_uri: `${process.env.REACT_APP_BASE_API_URL}/${REDIRECT_URI}`,
             prompt: 'select_account',
             access_type:'offline',
             scope
@@ -81,11 +83,10 @@ const LoginForm=()=>{
     return (
         <form className="form">
         <div className="title">Welcome,<br/><span>sign up to continue</span></div>
-        {message && <p>{message}</p>}
         <input type="email" placeholder="Email" name="email" value={login.email} className="input" onChange={handleChange}/>
         <input type="password" placeholder="Password" name="password" value={login.password} className="input" onChange={handleChange}/>
         <div className="login-with">
-            <button className="button-log" onClick={handleOAuth}>
+            <button type="button" className="button-log" onClick={handleOAuth}>
             <svg 
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 488 512" className="icon">

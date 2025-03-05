@@ -18,6 +18,7 @@ import PublicTheatrePage from './pages/PublicTheatrePage';
 import PublicMoviePage from './pages/PublicMoviePage';
 import PublicShowPage from './pages/PublicShowPage';
 import PublicAudi from './pages/PublicAudi';
+import OauthSuccess from './pages/OauthSuccess';
 
 function App() {
   const manageTabs =()=>{
@@ -62,6 +63,7 @@ function App() {
           <Route path='/login/' element={<LoginPage/>}></Route>
           <Route path='/register/' element={<RegisterPage/>}></Route>
           <Route path='/logout/' element={<HandleLogout/>}></Route>
+          <Route path='/oauth2-success/' element={<OauthSuccess/>}></Route>
           {/* Enterprise Routes */}
           <Route path="/enterprise/" element={<EnterpriseHomePage/>}></Route>
           <Route path="/enterprise/add-movie/" element={<AddMovie />} />
