@@ -1,12 +1,14 @@
 import { useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import DropdownComponent from "../components/DropdownComponent";
 import NavbarComponent from "../components/NavbarComponent";
-import DisplayScreenComponent from "../components/DisplayScreenComponent";
+import PublicShowComponent from "../components/PublicShowComponent"
 import "./PublicShowPage.css";
 
-const PublicShowPage=({shows})=>{
-  const [selectedShow, setSelectedShow]=useState("")
+const PublicShowPage=()=>{
+  const location=useLocation();
+  const shows=location.state?.shows || [];
+  const [selectedShow, setSelectedShow]=useState("");
   return (
       <section className="app-container">
         <style>
@@ -23,8 +25,8 @@ const PublicShowPage=({shows})=>{
           onChange={(value) => setSelectedShow(value)}
           />
           </section>
-          {selectedScreen &&(
-            <DisplayScreenComponent showId={selectedShow} theatreId={theatreId}/>
+          {selectedShow &&(
+            <PublicShowComponent selectedShow={selectedShow}/>
           )}
       </main>
     </section>

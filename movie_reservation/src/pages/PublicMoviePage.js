@@ -2,33 +2,33 @@ import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import DropdownComponent from "../components/DropdownComponent";
 import NavbarComponent from "../components/NavbarComponent";
-import "./PublicTheatrePage.css";
+import "./PublicMoviePage.css";
 
-const PublicTheatrePage=()=>{
+const PublicMoviePage=()=>{
     const navigate=useNavigate()
-    const [theatres,setTheatres]=useState([]);
-    const [selectedTheatre, setSelectedTheatre]=useState("")
+    const [movies,setMovies]=useState([]);
+    const [selectedMovie, setSelectedMovie]=useState("")
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_BASE_API_URL}/theatresall/`,{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/moviesall/`,{
             method: "GET",
             headers:{
                 "Content-Type": "application/json"
             },
         }).then(response => response.json()).then(data=>{
-            const theatreArray=Object.values(data);
-            setTheatres(theatreArray);})
+            const movieArray=Object.values(data);
+            setMovies(movieArray);})
         .catch(error=>console.error("Error fetching theatres", error));
       }, []);
     const HandleSubmit=()=>{
-        fetch(`${process.env.REACT_APP_BASE_API_URL}/theatresall/${selectedTheatre}/showall/`,{
+        fetch(`${process.env.REACT_APP_BASE_API_URL}/movieall/${selectedMovie}/showall/`,{
             method: "GET",
             headers:{
             "Content-Type": "application/json"
             }
         }).then(response => response.json()).then(data=>{
             const showArray = Object.values(data);  
-            navigate(`/view-shows/${selectedTheatre}/`, {state:{shows: showArray}});
+            navigate(`/view-shows/${selectedMovie}/`, {state:{shows: showArray}});
         }).catch(error=>console.error("Error fetching Shows", error));
     };
     return (
@@ -39,18 +39,18 @@ const PublicTheatrePage=()=>{
           <NavbarComponent/>
           <main className="select-main">
             <section className="selection">
-            <h2>Select Theatre</h2>
+            <h2>Select Movie</h2>
             <DropdownComponent
-            options={theatres}
-            labelKey="theatreName"
-            valueKey="theatreId"
-            onChange={(value) => setSelectedTheatre(value)}
+            options={movies}
+            labelKey="movieTitle"
+            valueKey="movieId"
+            onChange={(value) => setSelectedMovie(value)}
             />
             </section>
             <section className="buttons" >
             <button
                 onClick={HandleSubmit}
-                disabled={!selectedTheatre}
+                disabled={!selectedMovie}
             >
                 View Shows
             </button>
@@ -60,4 +60,4 @@ const PublicTheatrePage=()=>{
     );
 }
 
-export default PublicTheatrePage
+export default PublicMoviePage

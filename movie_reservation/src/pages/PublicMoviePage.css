@@ -1,0 +1,96 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* border: 1px solid white; */
+    font-size: 16px;
+    color:#b6b6b6;
+    --transition-speed: 600ms ;
+    font-family: "YOUNG SERIF";
+  }
+  .app-container{
+    background-image: url("../assets/mrslogo.svg");
+      background-color: #141414;
+      background-size: cover;
+      background-size: contain;
+      height: 100vh;
+      margin: auto;
+      background-repeat: no-repeat;
+      background-position: center;
+      overflow: hidden;
+  }
+  .app-container::-webkit-scrollbar{
+    width: 0.25rem;
+    fill: #141414;
+  }
+  .app-container::-webkit-scrollbar-track{
+    fill: #141414;
+  }
+  .app-container::-webkit-scrollbar-thumb{
+    fill: #221f1f;
+  }
+  .select-main{
+    margin-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+  .selection{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 0 45% 0 35%;
+  }
+  .selection h2{
+    width: 20rem;
+  }
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 20px;
+    margin: 0 50% 0 40%;
+  }
+  .buttons button{
+    width: 120px;
+    height: 40px;
+    border: 2px solid #737373;
+    background-color: #221f1f;
+    box-shadow: 4px 4px #737373;
+    font-size: 17px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 1rem;
+  }
+  button:hover {
+    background-color: #141414;
+    color: #e50914;
+  }
+  h1{
+    font-size: 3rem;
+    color: #ffffff;
+  }
+  h2{
+    font-size: 2rem;
+    color: #ffffff;
+  }
+  /* small screens */
+  @media only screen and (max-width: 600px) {
+    .app-container{
+      background-image: url("../assets/mrslogo.svg");
+      background-color: #000000;
+      background-size: contain;
+      height: 100vh;
+      margin: auto;
+      background-repeat: no-repeat;
+      background-position: center;
+      overflow-x: hidden;
+    }
+    main {
+      margin: 0;
+    }
+  }
+  /* large screens */
+  @media screen and (min-width:600px) {
+  }

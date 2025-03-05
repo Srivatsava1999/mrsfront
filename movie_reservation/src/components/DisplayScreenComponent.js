@@ -8,9 +8,6 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
     const [theatre,setTheatre]=useState([]);
     const user=JSON.parse(localStorage.getItem("user"));
     const navigate=useNavigate();
-    const requestBody={
-        refresh: user.refresh,
-    };
     useEffect(()=>{
         fetch(`${process.env.REACT_APP_BASE_API_URL}/theatre/${theatreId}/screen/${screenId}/`,{
             method: "GET",
@@ -20,7 +17,6 @@ const DisplayScreenComponent=({screenId, theatreId})=>{
                 "X-Refresh-Token": user.refresh,
                 "X-User-Id": user.user_id
             },
-            // body: JSON.stringify(requestBody),
         }).then(response=>response.json())
         .then(data=>{
             const { new_access_token, ...screenData}=data;

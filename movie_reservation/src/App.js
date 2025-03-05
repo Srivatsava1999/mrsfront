@@ -15,7 +15,9 @@ import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import HandleLogout from './pages/HandleLogout';
 import PublicTheatrePage from './pages/PublicTheatrePage';
+import PublicMoviePage from './pages/PublicMoviePage';
 import PublicShowPage from './pages/PublicShowPage';
+import PublicAudi from './pages/PublicAudi';
 
 function App() {
   const manageTabs =()=>{
@@ -70,8 +72,10 @@ function App() {
           <Route path='/screen/:screenId/seats/' element={<DisplayAudi/>}></Route>
           <Route path='/scheduleshow/' element={<ScheduleShow/>}></Route>
           {/* Public Routes */}
-          <Route path='/publictheatres/' element={<PublicTheatrePage/>}></Route>
-          <Route path='/view-shows/:theatreId/' element={<PublicShowPage/>}></Route>
+          <Route path='/publictheatre/' element={<PublicTheatrePage/>}></Route>
+          <Route path='/publicmovie/' element={<PublicMoviePage/>}></Route>
+          <Route path='/view-shows/:someId/' element={<PublicShowPage/>}></Route>
+          <Route path='/show/:screenId/seats/' element={<PublicAudi/>}></Route>
         </Routes>
       </BrowserRouter>
     
