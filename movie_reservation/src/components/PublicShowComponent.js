@@ -25,6 +25,8 @@ const PublicShowComponent=({selectedShow})=>{
                 <p>{showtype[show.showTypeId]}</p>
                 <p>Movie:</p>
                 <p>{show.movieTitle}</p>
+                <p>genre:</p>
+                <p>{show.genre}</p>
                 <p>Theatre:</p>
                 <p>{show.theatreName}</p>
             <button className="button-display-audi"

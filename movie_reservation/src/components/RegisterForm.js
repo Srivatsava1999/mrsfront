@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./RegisterForm.css";
 import { useNavigate } from "react-router-dom";
 import DropdownComponent from "./DropdownComponent";
@@ -24,6 +24,7 @@ const RegisterForm=()=>{
         event.preventDefault();
 
         try{
+            
             const response=await fetch(`${process.env.REACT_APP_BASE_API_URL}/register/`,
                 {
                     method: "POST",
@@ -84,7 +85,7 @@ const RegisterForm=()=>{
     };
 
     return (
-        <form className="form">
+        <form className="form" onSubmit={handleSubmit} method="POST">
         <div className="title">Welcome,<br/><span>sign up to continue</span></div>
         {message && <p>{message}</p>}
         <input type="email" placeholder="Email" name="email" value={register.email} className="input" onChange={handleChange}/>
@@ -111,9 +112,9 @@ const RegisterForm=()=>{
             </button>
             
         </div>
-        <button className="button-confirm" onClick={handleSubmit}>Let`s go →</button>
+        <button type="submit" className="button-confirm">Let`s go →</button>
         <span className="registerspan">Already have an account</span>
-        <button className="button-login" onClick={handleLogin}>Log In</button>
+        <button type="button" className="button-login" onClick={handleLogin}>Log In</button>
         </form>
     );
 };

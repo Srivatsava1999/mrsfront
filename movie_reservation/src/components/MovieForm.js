@@ -5,7 +5,7 @@ function MovieForm(){
     const [movie,setMovie]=useState({
         movieTitle:"",
         duration:"",
-        rating:"",
+        genre:"",
         release_date:""
     });
     const [message, setMessage]=useState("");
@@ -35,7 +35,7 @@ function MovieForm(){
                     setMovie({
                         movieTitle:"",
                         duration:"",
-                        rating:"",
+                        genre:"",
                         release_date:""
                     });
                     const data= await response.json();
@@ -61,8 +61,8 @@ function MovieForm(){
                 <input placeholder="Enter Title" type="text" name="movieTitle" value={movie.movieTitle} onChange={handleChange} required />
                 <label>Duration:</label>
                 <input placeholder="Enter Duration In Minutes" type="text" name="duration" value={movie.duration} onChange={handleChange} required/>
-                <label>Censor Rating:</label>
-                <input placeholder="Enter Rating" type="text" name="rating" value={movie.rating} onChange={handleChange} required/>
+                <label>Censor genre:</label>
+                <input placeholder="Enter genre" type="text" name="genre" value={movie.genre} onChange={handleChange} required/>
                 <label>Release Date:</label>
                 <input placeholder="Release Date" type="date" name="release_date" value={movie.release_date} onChange={handleChange} required/>
 

@@ -100,7 +100,7 @@ const LoginForm=()=>{
         </div>
         <button className="button-confirm" onClick={handleSubmit}>Let`s go →</button>
         <span className="registerspan">New here?</span>
-        <button className="button-register" onClick={handleRegister}>Register</button>
+        <button type="button" className="button-register" onClick={handleRegister}>Register</button>
         </form>
     );
 };
